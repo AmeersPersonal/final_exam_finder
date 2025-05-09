@@ -1,30 +1,32 @@
 package Pages;
-// Page 1 class
+// Page 2 class
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class Page1 extends JPanel {
-    private MainApp mainApp;
+public class Page3_ClassSelector extends JPanel {
+    // TODO need to invoke a backend method to pull down all classes 
 
-    public Page1(MainApp mainApp) {
-         this.mainApp = mainApp;
+    private MainApp mainApp;
+    public Page3_ClassSelector(MainApp mainApp) {
+        this.mainApp = mainApp;
         setLayout(new FlowLayout());
-        add(new JLabel("This is Page 1"));
-        JButton button = new JButton("Go to Page 2");
+        add(new JLabel("This is Page 3"));
+         JButton button = new JButton("Go to Page 1");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainApp.showPage("Page2");
+                mainApp.showPage("Page1");
             }
         });
-        JButton button2 = new JButton("Go to Page 3");
+
+        JButton button2 = new JButton("Go to Page 2");
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainApp.showPage("Page3");
+                mainApp.showPage("Page2");
             }
         });
         add(button);

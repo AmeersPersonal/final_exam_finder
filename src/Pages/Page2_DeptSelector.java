@@ -6,12 +6,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Page2 extends JPanel {
+public class Page2_DeptSelector extends JPanel {
+    // TODO need to invoke a backend method to create a series of buttons for dept selection & add them (could be a list or something)
+
     private MainApp mainApp;
-    public Page2(MainApp mainApp) {
+    private JLabel campusLabel;
+
+    public Page2_DeptSelector(MainApp mainApp) {
         this.mainApp = mainApp;
         setLayout(new FlowLayout());
-        add(new JLabel("This is Page 2"));
+        campusLabel = new JLabel("Campus Selected: " + mainApp.getCampus().getName());
+
+        add(campusLabel);
          JButton button = new JButton("Go to Page 1");
         button.addActionListener(new ActionListener() {
             @Override
@@ -28,5 +34,9 @@ public class Page2 extends JPanel {
         });
         add(button);
         add(button2);
+    }
+
+    public void updateCampusLabel() {
+        campusLabel.setText("Campus Selected: " + mainApp.getCampus());
     }
 }
