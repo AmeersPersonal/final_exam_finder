@@ -1,14 +1,12 @@
 package Academics;
 
-import Academics.Courses;
-
 public class Deparment {
     private final String name;
     private final String type;
-    public Courses[] courses;
+    public NYCCourse[] courses;
     public static Deparment[] deparments;
 
-    public Deparment(String name, String type, Courses[] courses) {
+    public Deparment(String name, String type, NYCCourse[] courses) {
         this.name = name;
         this.type = type;
         this.courses = courses;
@@ -25,7 +23,7 @@ public class Deparment {
     }
     public String getCourses() {
         String s = "";
-        for (Courses c : courses) {
+        for (NYCCourse c : courses) {
             s +=c.toString() +"\n";
         }
         return s;
@@ -47,8 +45,8 @@ public class Deparment {
         deparments = newDeparments;
     }
 
-    public void appendCourses(Courses[] courses) {
-        Courses[] newCourses = new Courses[this.courses.length + courses.length];
+    public void appendCourses(NYCCourse[] courses) {
+        NYCCourse[] newCourses = new NYCCourse[this.courses.length + courses.length];
 
         for (int i = 0; i < this.courses.length; i++) {
             newCourses[i] = this.courses[i];
@@ -59,8 +57,8 @@ public class Deparment {
         }
         this.courses = newCourses;
     }
-    public void appendCourses(Courses courses) {
-        Courses[] newCourses = new Courses[this.courses.length + 1];
+    public void appendCourses(NYCCourse courses) {
+        NYCCourse[] newCourses = new NYCCourse[this.courses.length + 1];
         for (int i = 0; i < this.courses.length; i++) {
             newCourses[i] = this.courses[i];
 
