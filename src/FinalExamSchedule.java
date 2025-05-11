@@ -7,6 +7,7 @@ public class FinalExamSchedule {
     private String examLocation;
     private String campusLocation;
 
+    //Max You
     public FinalExamSchedule(String csvLine) {
         String[] parts = csvLine.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
         if (parts.length < 8) {
