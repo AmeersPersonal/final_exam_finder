@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import Pages.MainApp;
 
+//Max You
 public class Main {
     public static void main(String[] args) {
 
