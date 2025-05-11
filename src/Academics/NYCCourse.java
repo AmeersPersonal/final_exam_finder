@@ -1,5 +1,7 @@
 package Academics;
 
+import java.util.ArrayList;
+
 public class NYCCourse extends Course {
     public final String courseCode;
     public final String courseName;
@@ -7,7 +9,7 @@ public class NYCCourse extends Course {
 
     public String professorName;
     public String final_exam_date;
-    public static  NYCCourse[] nycCourses;
+    public static  ArrayList<NYCCourse> courses = new ArrayList<NYCCourse>();
 
     public NYCCourse(String courseCode, String courseName, String courseSection, String professorName, final String final_exam_date) {
         super("NYC", courseCode, courseName, courseSection);
@@ -16,7 +18,7 @@ public class NYCCourse extends Course {
         this.courseSection = courseSection;
         this.professorName = professorName;
         this.final_exam_date = final_exam_date;
-        appendNycCourse(this);
+        courses.add(this);
 
     }
     public String getCourseCode() {
@@ -46,25 +48,10 @@ public class NYCCourse extends Course {
         return this.final_exam_date;
     }
 
-    public static NYCCourse[] getNycCourses() {
-        NYCCourse[] nycCourses = new NYCCourse[NYCCourse.nycCourses.length];
-        for (int i = 0; i < nycCourses.length; i++) {
-            nycCourses[i] = NYCCourse.nycCourses[i];
-        }
-        return nycCourses;
-    }
+   public static ArrayList<NYCCourse> getCourses() {
+        return new ArrayList<NYCCourse>(courses);
+   }
 
-    public void appendNycCourse(NYCCourse nycCourse) {
-        NYCCourse[] arr = new NYCCourse[NYCCourse.nycCourses.length + 1];
-        for(int i = 0; i < NYCCourse.nycCourses.length; i++) {
-            arr[i] = NYCCourse.nycCourses[i];
-
-        }
-
-        arr[NYCCourse.nycCourses.length] = nycCourse;
-        NYCCourse.nycCourses = arr;
-
-    }
 
     @Override
     public String toString() {

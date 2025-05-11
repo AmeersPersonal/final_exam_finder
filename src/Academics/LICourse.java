@@ -1,12 +1,15 @@
 package Academics;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class LICourse extends Course{
-    public final String courseCode;
-    public final String courseName;
+    private final String courseCode;
+    private final String courseName;
     public final String courseSection;
-    public  String final_exam_date;
-    public String professorName;
-    public static LICourse[] LICourses;
+    private  String final_exam_date;
+    private String professorName;
+    private static ArrayList<LICourse> courses = new ArrayList<>();
 
 
     public LICourse(String courseCode, String courseName, String courseSection, String professorName, String final_exam_date) {
@@ -16,7 +19,7 @@ public class LICourse extends Course{
         this.courseSection = courseSection;
         this.professorName = professorName;
         this.final_exam_date = final_exam_date;
-        appendLICourse(this);
+        courses.add(this);
 
     }
     public String getCourseCode() {
@@ -45,25 +48,10 @@ public class LICourse extends Course{
     public String getFinalExamDate() {
         return this.final_exam_date;
     }
-    public static LICourse[] getLICourses() {
-        LICourse[] liCourses = new LICourse[LICourse.LICourses.length];
-        for (int i = 0; i < liCourses.length; i++) {
-            liCourses[i] = LICourse.LICourses[i];
-        }
-        return liCourses;
+    public static ArrayList<LICourse> getCourses() {
+        return new ArrayList<LICourse>(courses);
     }
 
-    public void appendLICourse(LICourse LICourse) {
-        LICourse[] arr = new LICourse[LICourse.LICourses.length];
-        for(int i = 0; i < LICourse.LICourses.length; i++) {
-            arr[i] = LICourse.LICourses[i];
-
-        }
-
-        arr[LICourse.LICourses.length] = LICourse;
-        LICourses = arr;
-
-    }
 
 
     @Override
@@ -72,3 +60,4 @@ public class LICourse extends Course{
 
     }
 }
+

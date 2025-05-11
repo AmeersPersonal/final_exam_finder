@@ -37,6 +37,11 @@ public class Deparment {
     }
 
     public void appendDeparment(Deparment deparment) {
+        if (deparments == null) {
+            deparments = new Deparment[1];
+            deparments[0] = deparment;
+
+        }
         Deparment[] newDeparments = new Deparment[this.courses.length + 1];
         for (int i = 0; i < deparments.length; i++) {
             newDeparments[i] = deparments[i];
@@ -45,6 +50,11 @@ public class Deparment {
         deparments = newDeparments;
     }
     public void appendDeparmentName(String name){
+        if(deparmentNames == null){
+            deparmentNames = new String[this.courses.length + 1];
+            deparmentNames[0] = this.name;
+            return;
+        }
         String[] names = new String[deparmentNames.length + 1];
         for (int i = 0; i < deparmentNames.length; i++) {
             names[i] = deparmentNames[i];
@@ -55,6 +65,9 @@ public class Deparment {
         deparmentNames = names;
     }
     public static boolean doesDeparmentExist(String name ){
+        if (deparmentNames == null){
+            return false;
+        }
         for (String d : deparmentNames) {
             if (d.equals(name)) {
                 return true;

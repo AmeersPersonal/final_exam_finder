@@ -18,8 +18,8 @@ public class IO {
             StringBuilder sb = new StringBuilder();
             String line;
             //checks if line exists and not end in file
-            while ((br.readLine()) != null) {
-                line = br.readLine();
+            while ((line = br.readLine()) != null) {
+
                 if (line == null) {
                     continue;
                 }
@@ -31,7 +31,7 @@ public class IO {
                     String[] data1 = data[1].split(" ");
                     String deparement = data1[0];
                     String code =  data1[1];
-                    String section = data1[2];
+
                     String courseName = data[2];
                     String professorName = data[3];
                     String day = data[4];
@@ -41,15 +41,16 @@ public class IO {
                     String building = data[8];
                     String room = data[9].split("Rm. ")[0];
                     String campus =data[10];
+                    System.out.println(deparement);
 
-                    Course c = null;
+                    Course c;
                     if (campus.equals("New York City")){
-                        c= ((NYCCourse) c);
-                        c = new NYCCourse(deparement + " " + code, courseName, section, professorName, date);
+
+                        c = new NYCCourse(deparement + " " + code, courseName, code, professorName, date);
                     }
                     else{
-                        c= ((LICourse) c);
-                         c = new LICourse(deparement + " " + code, courseName, section, professorName, date);
+
+                         c = new LICourse(deparement + " " + code, courseName, code, professorName, date);
                     }
 
 
