@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import Academics.Course;
 import Pages.Campus;
 
 public class AppStateManager {
@@ -46,11 +47,11 @@ public class AppStateManager {
     }
 
     public ArrayList<String> getDeptList() {
-        return this.deptList;
+        return StringArrayListCopy(this.deptList);
     }
 
     public ArrayList<String> getCourseList() {
-        return this.deptList;
+        return StringArrayListCopy(this.courseList);
     }
 
     // setters
@@ -66,9 +67,26 @@ public class AppStateManager {
         this.courseSelected = courseSelected;
     }
 
+    public void setDeptList(ArrayList<String> deptList) {
+        this.deptList = deptList;
+    }
+
+    public void setCourseList(ArrayList<String> courseList) {
+        this.courseList = courseList;
+    }  
+
     // navigate to a page. State Manager has it to tell the main page where to go. 
     public void navigateTo(PageIdentifier pageName) {
         this.mainPage.navigateToPage(pageName.getDisplayName());
     }
     
+    private ArrayList<String> StringArrayListCopy(ArrayList<String> list) {
+        ArrayList<String> listCopy = new ArrayList<String>();
+
+        list.forEach((String s) -> {
+            listCopy.add(s);
+        });
+
+        return listCopy;
+    }
 }
