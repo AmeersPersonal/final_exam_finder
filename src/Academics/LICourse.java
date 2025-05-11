@@ -4,17 +4,19 @@ public class LICourse extends Course{
     public final String courseCode;
     public final String courseName;
     public final String courseSection;
-
+    public  String final_exam_date;
     public String professorName;
-    public String final_exam_date;
+    public static LICourse[] LICourses;
+
 
     public LICourse(String courseCode, String courseName, String courseSection, String professorName, String final_exam_date) {
-        super("NYC", courseCode, courseName, courseSection);
+        super("LI", courseCode, courseName, courseSection);
         this.courseCode = courseCode;
         this.courseName = courseName;
-        this.courseSection = "";
-        this.professorName = "";
-        this.final_exam_date = "";
+        this.courseSection = courseSection;
+        this.professorName = professorName;
+        this.final_exam_date = final_exam_date;
+        appendLICourse(this);
 
     }
     public String getCourseCode() {
@@ -29,7 +31,7 @@ public class LICourse extends Course{
 
     @Override
     String getLocation() {
-        return "NYC";
+        return "LI";
     }
 
 
@@ -42,6 +44,25 @@ public class LICourse extends Course{
     }
     public String getFinalExamDate() {
         return this.final_exam_date;
+    }
+    public static LICourse[] getLICourses() {
+        LICourse[] liCourses = new LICourse[LICourse.LICourses.length];
+        for (int i = 0; i < liCourses.length; i++) {
+            liCourses[i] = LICourse.LICourses[i];
+        }
+        return liCourses;
+    }
+
+    public void appendLICourse(LICourse LICourse) {
+        LICourse[] arr = new LICourse[LICourse.LICourses.length];
+        for(int i = 0; i < LICourse.LICourses.length; i++) {
+            arr[i] = LICourse.LICourses[i];
+
+        }
+
+        arr[LICourse.LICourses.length] = LICourse;
+        LICourses = arr;
+
     }
 
 

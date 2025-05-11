@@ -2,15 +2,17 @@ package Academics;
 
 public class Deparment {
     private final String name;
-    private final String type;
-    public NYCCourse[] courses;
-    public static Deparment[] deparments;
 
-    public Deparment(String name, String type, NYCCourse[] courses) {
+    public Course[] courses;
+    public static Deparment[] deparments;
+    public static String[] deparmentNames;
+
+    public Deparment(String name, Course[] courses) {
         this.name = name;
-        this.type = type;
+
         this.courses = courses;
         appendDeparment(this);
+
 
 
     }
@@ -18,12 +20,10 @@ public class Deparment {
     public String getName() {
         return this.name;
     }
-    public String getType() {
-        return this.type;
-    }
+
     public String getCourses() {
         String s = "";
-        for (NYCCourse c : courses) {
+        for (Course c : courses) {
             s +=c.toString() +"\n";
         }
         return s;
@@ -44,9 +44,27 @@ public class Deparment {
         newDeparments[newDeparments.length - 1] = deparment;
         deparments = newDeparments;
     }
+    public void appendDeparmentName(String name){
+        String[] names = new String[deparmentNames.length + 1];
+        for (int i = 0; i < deparmentNames.length; i++) {
+            names[i] = deparmentNames[i];
 
-    public void appendCourses(NYCCourse[] courses) {
-        NYCCourse[] newCourses = new NYCCourse[this.courses.length + courses.length];
+
+        }
+        names[names.length-1 ] = name;
+        deparmentNames = names;
+    }
+    public static boolean doesDeparmentExist(String name ){
+        for (String d : deparmentNames) {
+            if (d.equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void appendCourses(Course[] courses) {
+        Course[] newCourses = new NYCCourse[this.courses.length + courses.length];
 
         for (int i = 0; i < this.courses.length; i++) {
             newCourses[i] = this.courses[i];
@@ -57,8 +75,9 @@ public class Deparment {
         }
         this.courses = newCourses;
     }
-    public void appendCourses(NYCCourse courses) {
-        NYCCourse[] newCourses = new NYCCourse[this.courses.length + 1];
+
+    public void appendCourses(Course courses) {
+        Course[] newCourses = new Course[this.courses.length + 1];
         for (int i = 0; i < this.courses.length; i++) {
             newCourses[i] = this.courses[i];
 

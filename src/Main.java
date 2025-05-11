@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,11 +8,12 @@ import javax.swing.JFrame;
 
 import Pages.MainApp;
 
+
 //Written by Max You
 //edited by
 public class Main {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws FileNotFoundException {
+        System.out.println("\n\n\n\n\n\n\n\n\n" + IO.readFile("src/FinalExam.csv"));
         System.out.println("Hello and welcome!");
 
         JFrame app = new MainApp();
@@ -64,6 +66,8 @@ public class Main {
         for (FinalExamSchedule result : filtered) {
             System.out.println(result);
         }
+
+
     }
 
     private static List<FinalExamSchedule> filterByField(List<FinalExamSchedule> list, String field, String query) {
