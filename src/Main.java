@@ -7,7 +7,8 @@ import javax.swing.JFrame;
 
 import Pages.MainApp;
 
-//Max You
+//Written by Max You
+//edited by
 public class Main {
     public static void main(String[] args) {
 
