@@ -13,6 +13,9 @@ public enum Campus {
     }
 
     public String getName() {
+        if (name == null) {
+            return "";
+        }
         return name;
     }
 }

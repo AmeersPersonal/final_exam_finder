@@ -11,6 +11,7 @@ public class MainApp extends JFrame {
     private Campus campus;
 
     public MainApp() {
+        campus = Campus.NONE; // Default campus
         setTitle("Multi-Page App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300);
@@ -30,8 +31,6 @@ public class MainApp extends JFrame {
 
         add(mainPanel);
         setVisible(true);
-
-        campus = Campus.NONE; // Default campus
     }
 
     public void showPage(String pageName) {
@@ -40,6 +39,7 @@ public class MainApp extends JFrame {
     }
 
     public Campus getCampus() {
+
         // returns the selected campus w/ default to none
         return campus;
     }
