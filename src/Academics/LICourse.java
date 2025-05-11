@@ -1,6 +1,6 @@
 package Academics;
 
-public class NYCCourse extends Course {
+public class LICourse extends Course{
     public final String courseCode;
     public final String courseName;
     public final String courseSection;
@@ -8,7 +8,7 @@ public class NYCCourse extends Course {
     public String professorName;
     public String final_exam_date;
 
-    public NYCCourse(String courseCode, String courseName, String courseSection, String professorName, String final_exam_date) {
+    public LICourse(String courseCode, String courseName, String courseSection, String professorName, String final_exam_date) {
         super("NYC", courseCode, courseName, courseSection);
         this.courseCode = courseCode;
         this.courseName = courseName;
