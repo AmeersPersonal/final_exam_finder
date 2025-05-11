@@ -4,19 +4,16 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import javax.swing.JFrame;
-
-import Pages.MainApp;
+import Pages.AppStateManager;
 
 
 //Written by Max You
 //edited by
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        System.out.println("\n\n\n\n\n\n\n\n\n" + IO.readFile("src/FinalExam.csv"));
-        System.out.println("Hello and welcome!");
+        AppStateManager GUIState = new AppStateManager();
 
-        MainApp app = new MainApp();
+        System.out.println("\n\n\n\n\n\n\n\n\n" + IO.readFile("src/FinalExam.csv"));
 
         List<String> dataLines = List.of(
                 "ICLT 327 M02,The Literature of Initiation,Trimnell,\"Thursday, May 15, 2025\",5:30 PM,8:10 PM,\"26 W. 61st St., Rm. 401\",New York City",

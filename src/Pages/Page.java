@@ -7,10 +7,10 @@ import java.awt.event.ActionListener;
 // Jeffrey: Abstract class for all pages in the application. This class provides a common structure and methods for all pages.
 public abstract class Page extends JPanel{
     // Includes State Manager which holds information about the current state of the application
-    protected StateManager state;
+    protected AppStateManager state;
 
     // Default Constructor of our page. All pages will need a state manager, have flow layout, and call an addComponents method to add the components onto the page.
-    protected Page(StateManager state) {
+    protected Page(AppStateManager state) {
         this.state = state;
         setLayout(new FlowLayout());
         this.addComponents();
@@ -25,7 +25,10 @@ public abstract class Page extends JPanel{
         add(button);
     }
 
-    // Abstract method to be implemented by each page. This method is called as soon as the page is navigated to.
-    public abstract void onPageShown();
+    // method that updates all components whenever the page is shown. This will dynamically update the page once the user navigates to it.
+    public void onPageShown() {
+        removeAll();
+        addComponents();
+    };
 
 }

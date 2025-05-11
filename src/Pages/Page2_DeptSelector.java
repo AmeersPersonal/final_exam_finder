@@ -14,7 +14,7 @@ public class Page2_DeptSelector extends Page {
     // Instance fields
     private JLabel campusLabel;
 
-    public Page2_DeptSelector(StateManager state) {
+    public Page2_DeptSelector(AppStateManager state) {
         super(state);
         // Empty department list for now, this will be populated once the campus is selected.
     }
@@ -24,6 +24,7 @@ public class Page2_DeptSelector extends Page {
         // Add title label
         this.campusLabel = new JLabel("Campus Selected: " + state.getCampus().getName() + " , Please select your dept out of the list");
         add(this.campusLabel);
+        addButtons(state.getDeptList());
     }
 
     // Helper method, takes an array of departments and creates a button for each dept.
@@ -35,17 +36,5 @@ public class Page2_DeptSelector extends Page {
                 state.navigateTo(PageIdentifier.PAGE3);
             });
         }
-    }
-
-    // Helper method, updates campus label with current campus in state.
-    public void updateCampusLabel() {
-        campusLabel.setText("Campus Selected: " + state.getCampus().getName() + " , Please select your dept out of the list");
-    }
-
-    // On page shown, we need to update the campus label and add buttons for each department.
-    @Override
-    public void onPageShown() {
-        updateCampusLabel();
-        addButtons(state.getDeptList());
     }
 }

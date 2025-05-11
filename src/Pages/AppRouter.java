@@ -8,26 +8,24 @@ import java.awt.*;
 import java.util.ArrayList;
 
 // Jeffrey: Page Navigator, handles the main application and navigation between pages.
-public class MainApp {
+public class AppRouter {
     // Include State Manager, which manages the state of the whole application
-    private StateManager state;
     private JFrame frame;
     // CardLayout is used to showcase one page at a time.
     private CardLayout cardLayout;
     private JPanel mainPanel;
 
-    public MainApp() {
+    public AppRouter(AppStateManager state) {
         // StateManager uses the mainApp instance 
-        state = new StateManager(this);
-        frame = new JFrame();
+        this.frame = new JFrame();
 
         // JFrame settings
-        frame.setTitle("Multi-Page App");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
+        this.frame.setTitle("Multi-Page App");
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setSize(400, 300);
 
-        cardLayout = new CardLayout();
-        mainPanel = new JPanel(cardLayout);
+        this.cardLayout = new CardLayout();
+        this.mainPanel = new JPanel(this.cardLayout);
 
         // Create instances of page classes
         Page1_CampusSelector page1 = new Page1_CampusSelector(state);
@@ -35,17 +33,17 @@ public class MainApp {
         Page3_ClassSelector page3 = new Page3_ClassSelector(state);
 
         // Add pages to the card layout
-        mainPanel.add(page1, PageIdentifier.PAGE1.getDisplayName());
-        mainPanel.add(page2, PageIdentifier.PAGE2.getDisplayName());
-        mainPanel.add(page3, PageIdentifier.PAGE3.getDisplayName());
+        this.mainPanel.add(page1, PageIdentifier.PAGE1.getDisplayName());
+        this.mainPanel.add(page2, PageIdentifier.PAGE2.getDisplayName());
+        this.mainPanel.add(page3, PageIdentifier.PAGE3.getDisplayName());
 
-        frame.add(mainPanel);
-        frame.setVisible(true);
+        this.frame.add(mainPanel);
+        this.frame.setVisible(true);
     }
 
     // Helper method to get the current page by checking which component is visible.
     public Component getCurrentPage() {
-        for (Component component : mainPanel.getComponents()) {
+        for (Component component : this.mainPanel.getComponents()) {
             if (component.isVisible()) {
                 return component; // Return the currently visible component
             }
@@ -55,7 +53,7 @@ public class MainApp {
 
     // Using a safe cast to confirm that the component is a page and call the onPageShown method. this allows us to dynamically update the page once we navigate to it.
     public void navigateToPage(String pageName) {
-        cardLayout.show(mainPanel, pageName);
+        this.cardLayout.show(this.mainPanel, pageName);
         Component currentPage = getCurrentPage();
         if (currentPage instanceof Page) {
             ((Page) currentPage).onPageShown();

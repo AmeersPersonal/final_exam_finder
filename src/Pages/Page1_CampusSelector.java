@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class Page1_CampusSelector extends Page {
 
     // Constructor
-    public Page1_CampusSelector(StateManager state) {
+    public Page1_CampusSelector(AppStateManager state) {
         super(state);
     }
 
@@ -33,11 +33,5 @@ public class Page1_CampusSelector extends Page {
             state.setCampus(Campus.NEW_YORK_CITY);
             state.navigateTo(PageIdentifier.PAGE2);
         });   
-    }
-
-    // called method once the page is shown
-    @Override
-    public void onPageShown() {
-        // Nothing happens, this is a static page and nothing else needs to be called.
     }
 }

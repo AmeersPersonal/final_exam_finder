@@ -6,10 +6,10 @@ import javax.swing.JPanel;
 
 import Pages.Campus;
 
-public class StateManager {
+public class AppStateManager {
 
     // Instance fields
-    private MainApp mainPage;
+    private AppRouter mainPage;
     private Campus campus;
     private String deptSelected;
     private String courseSelected;
@@ -18,7 +18,7 @@ public class StateManager {
 
     // State Manager for our app, an all-in-one place to retrieve and update state via the application.
     // Part of this was inspired by web development, specifically React and how they have different state varables.
-    public StateManager(MainApp mainPage) {
+    public AppStateManager() {
         System.out.println("StateManager constructor called");
 
         // instantiate all instance fields
@@ -27,11 +27,12 @@ public class StateManager {
         this.courseSelected = "";
 
         // StateManager uses the main Page to tell the page where it needs to navigate to.
-        this.mainPage = mainPage;
 
         // dummy data
         deptList.add("Hello World");
         courseList.add("Hello World");
+        
+        this.mainPage = new AppRouter(this);
     }
     
     // getters

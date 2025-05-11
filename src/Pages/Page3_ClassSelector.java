@@ -13,7 +13,7 @@ public class Page3_ClassSelector extends Page {
     private JLabel titleLabel;
 
     // Constructor
-    public Page3_ClassSelector(StateManager state) {
+    public Page3_ClassSelector(AppStateManager state) {
         super(state);
     }
 
@@ -22,6 +22,7 @@ public class Page3_ClassSelector extends Page {
     public void addComponents() {
         this.titleLabel = new JLabel("Dept Selected: " + state.getDept() + " , Please select your course of the list");
         add(this.titleLabel);
+        addButtons(state.getCourseList());
     }
     
     // Helper method to add buttons across a list of courses.
@@ -38,17 +39,5 @@ public class Page3_ClassSelector extends Page {
 
             add(button);
         }
-    }
-
-    // Helper method to help update the info label with current dept selected
-    public void updateInfoLabel() {
-        this.titleLabel.setText("Dept Selected: " + state.getDept() + " , Please select your course of the list");
-    }
-
-    // On page shown, we need to update title label and add buttons for each course.
-    @Override
-    public void onPageShown() {
-        updateInfoLabel();
-        addButtons(state.getCourseList());
     }
 }
