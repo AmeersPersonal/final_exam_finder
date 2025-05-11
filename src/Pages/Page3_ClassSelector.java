@@ -5,31 +5,50 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class Page3_ClassSelector extends JPanel {
-    // TODO need to invoke a backend method to pull down all classes 
+// Jeffrey: Third page that allows you to select a class based on department.
+public class Page3_ClassSelector extends Page {
+    // instance fields
+    private JLabel titleLabel;
 
-    private MainApp mainApp;
-    public Page3_ClassSelector(MainApp mainApp) {
-        this.mainApp = mainApp;
-        setLayout(new FlowLayout());
-        add(new JLabel("This is Page 3"));
-         JButton button = new JButton("Go to Page 1");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainApp.showPage("Page1");
-            }
-        });
+    // Constructor
+    public Page3_ClassSelector(StateManager state) {
+        super(state);
+    }
 
-        JButton button2 = new JButton("Go to Page 2");
-        button2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainApp.showPage("Page2");
-            }
-        });
-        add(button);
-        add(button2);
+    // Add components to the page such as the title label.
+    @Override
+    public void addComponents() {
+        this.titleLabel = new JLabel("Dept Selected: " + state.getDept() + " , Please select your course of the list");
+        add(this.titleLabel);
+    }
+    
+    // Helper method to add buttons across a list of courses.
+    public void addButtons(ArrayList<String> listOfCourseCodes) {
+        for (String name : listOfCourseCodes) {
+            JButton button = new JButton(name);
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    state.setCourseSelected(name);
+                    state.navigateTo(PageIdentifier.PAGE2);
+                }
+            });
+
+            add(button);
+        }
+    }
+
+    // Helper method to help update the info label with current dept selected
+    public void updateInfoLabel() {
+        this.titleLabel.setText("Dept Selected: " + state.getDept() + " , Please select your course of the list");
+    }
+
+    // On page shown, we need to update title label and add buttons for each course.
+    @Override
+    public void onPageShown() {
+        updateInfoLabel();
+        addButtons(state.getCourseList());
     }
 }
