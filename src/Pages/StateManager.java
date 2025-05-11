@@ -17,6 +17,7 @@ public class StateManager {
     private ArrayList<String> courseList = new ArrayList<>();
 
     // State Manager for our app, an all-in-one place to retrieve and update state via the application.
+    // Part of this was inspired by web development, specifically React and how they have different state varables.
     public StateManager(MainApp mainPage) {
         System.out.println("StateManager constructor called");
 

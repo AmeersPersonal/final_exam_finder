@@ -16,10 +16,7 @@ public class Main {
         System.out.println("\n\n\n\n\n\n\n\n\n" + IO.readFile("src/FinalExam.csv"));
         System.out.println("Hello and welcome!");
 
-        JFrame app = new MainApp();
-        app.setVisible(true);
-        app.setDefaultCloseOperation(MainApp.EXIT_ON_CLOSE);
-        app.setSize(400, 300);
+        MainApp app = new MainApp();
 
         List<String> dataLines = List.of(
                 "ICLT 327 M02,The Literature of Initiation,Trimnell,\"Thursday, May 15, 2025\",5:30 PM,8:10 PM,\"26 W. 61st St., Rm. 401\",New York City",

@@ -8,11 +8,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 // Jeffrey: Page Navigator, handles the main application and navigation between pages.
-public class MainApp extends JFrame{
-
+public class MainApp {
     // Include State Manager, which manages the state of the whole application
     private StateManager state;
-
+    private JFrame frame;
     // CardLayout is used to showcase one page at a time.
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -20,11 +19,12 @@ public class MainApp extends JFrame{
     public MainApp() {
         // StateManager uses the mainApp instance 
         state = new StateManager(this);
+        frame = new JFrame();
 
         // JFrame settings
-        setTitle("Multi-Page App");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
+        frame.setTitle("Multi-Page App");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
 
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
@@ -39,8 +39,8 @@ public class MainApp extends JFrame{
         mainPanel.add(page2, PageIdentifier.PAGE2.getDisplayName());
         mainPanel.add(page3, PageIdentifier.PAGE3.getDisplayName());
 
-        add(mainPanel);
-        setVisible(true);
+        frame.add(mainPanel);
+        frame.setVisible(true);
     }
 
     // Helper method to get the current page by checking which component is visible.

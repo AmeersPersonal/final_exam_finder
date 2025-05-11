@@ -16,7 +16,7 @@ public abstract class Course {
 
     }
 
-    abstract String getLocation();NYCCourse
+    abstract String getLocation();
 
 
 
