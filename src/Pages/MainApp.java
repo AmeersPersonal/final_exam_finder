@@ -1,17 +1,27 @@
 package Pages;
+
+
 // Main application class
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 
-public class MainApp extends JFrame {
+// Jeffrey: Page Navigator, handles the main application and navigation between pages.
+public class MainApp extends JFrame{
 
+    // Include State Manager, which manages the state of the whole application
+    private StateManager state;
+
+    // CardLayout is used to showcase one page at a time.
     private CardLayout cardLayout;
     private JPanel mainPanel;
-    private Campus campus;
 
     public MainApp() {
-        campus = Campus.NONE; // Default campus
+        // StateManager uses the mainApp instance 
+        state = new StateManager(this);
+
+        // JFrame settings
         setTitle("Multi-Page App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300);
@@ -20,43 +30,35 @@ public class MainApp extends JFrame {
         mainPanel = new JPanel(cardLayout);
 
         // Create instances of page classes
-        Page1_CampusSelector page1 = new Page1_CampusSelector(this);
-        Page2_DeptSelector page2 = new Page2_DeptSelector(this);
-        Page3_ClassSelector page3 = new Page3_ClassSelector(this);
+        Page1_CampusSelector page1 = new Page1_CampusSelector(state);
+        Page2_DeptSelector page2 = new Page2_DeptSelector(state);
+        Page3_ClassSelector page3 = new Page3_ClassSelector(state);
 
         // Add pages to the card layout
-        mainPanel.add(page1, "Page1");
-        mainPanel.add(page2, "Page2");
-        mainPanel.add(page3, "Page3");
+        mainPanel.add(page1, PageIdentifier.PAGE1.getDisplayName());
+        mainPanel.add(page2, PageIdentifier.PAGE2.getDisplayName());
+        mainPanel.add(page3, PageIdentifier.PAGE3.getDisplayName());
 
         add(mainPanel);
         setVisible(true);
     }
 
-    public void showPage(String pageName) {
-        // Show the intiial main panels
+    // Helper method to get the current page by checking which component is visible.
+    public Component getCurrentPage() {
+        for (Component component : mainPanel.getComponents()) {
+            if (component.isVisible()) {
+                return component; // Return the currently visible component
+            }
+        }
+        return null; // Return null if no component is visible
+    }
+
+    // Using a safe cast to confirm that the component is a page and call the onPageShown method. this allows us to dynamically update the page once we navigate to it.
+    public void navigateToPage(String pageName) {
         cardLayout.show(mainPanel, pageName);
-    }
-
-    public Campus getCampus() {
-
-        // returns the selected campus w/ default to none
-        return campus;
-    }
-
-    public void setCampus(Campus campus) {
-        // updates the selected campus across the entire app and calls updateState to update the pages w/ new
-        this.campus = campus;
-        updateState();
-    }
-
-    private void updateState() {
-        // Update the state of the application based on the selected campus
-        // This can include enabling/disabling buttons, changing labels, etc.
-        // any changes that need to be done across an entire application should be done here
-
-        if (mainPanel.getComponent(1) instanceof Page2_DeptSelector) { // Assuming Page2 is the second component
-            ((Page2_DeptSelector) mainPanel.getComponent(1)).updateCampusLabel();
+        Component currentPage = getCurrentPage();
+        if (currentPage instanceof Page) {
+            ((Page) currentPage).onPageShown();
         }
     }
 }
