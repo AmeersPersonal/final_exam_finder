@@ -1,7 +1,6 @@
 package Academics;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class LICourse extends Course{
     private final String courseCode;
@@ -48,6 +47,7 @@ public class LICourse extends Course{
     public String getFinalExamDate() {
         return this.final_exam_date;
     }
+    
     public static ArrayList<LICourse> getCourses() {
         return new ArrayList<LICourse>(courses);
     }
