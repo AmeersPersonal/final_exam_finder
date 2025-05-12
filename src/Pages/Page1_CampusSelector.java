@@ -1,7 +1,6 @@
 package Pages;
 
-import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -20,6 +19,7 @@ public class Page1_CampusSelector extends Page {
         JLabel quickSearchLabel = new JLabel("Use this to quick search:");
         JTextField quickSearchField = new JTextField("");
         quickSearchField.setPreferredSize(new java.awt.Dimension(150, 25));
+        quickSearchLabel.setForeground(Color.WHITE);
 
         add(quickSearchLabel);
         add(quickSearchField);
@@ -40,8 +40,12 @@ public class Page1_CampusSelector extends Page {
         JLabel title = new JLabel("Choose your campus");
         title.setAlignmentX(CENTER_ALIGNMENT);
         title.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
+        title.setForeground(Color.BLACK);
+        title.setFont(new Font("Arial", Font.BOLD, 80));
+        infoPanel.setBackground(new Color(242, 169, 0));
         infoPanel.add(title);
         infoPanel.add(buttonPanel);
+        buttonPanel.setBackground(new Color(242, 169, 0));
 
         // Creates buttons for campus selection and moves to the next page.
         // calling State manager to update the campus info based on the button pressed.
@@ -75,5 +79,10 @@ public class Page1_CampusSelector extends Page {
         button.setFont(new Font("Arial", Font.PLAIN, 30));
         button.addActionListener(action);
         panel.add(button);
+    }
+    //Color of the Background
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        setBackground(new Color(0, 45, 114));
     }
 }

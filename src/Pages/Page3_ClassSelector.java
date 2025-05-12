@@ -6,8 +6,7 @@ import Academics.Deparment;
 import Academics.LICourse;
 import Academics.NYCCourse;
 
-import java.awt.GridLayout;
-import java.awt.Panel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -31,6 +30,7 @@ public class Page3_ClassSelector extends Page {
         });
         this.titleLabel = new JLabel("Dept Selected: " + state.getDept() + " , Please select your course of the list");
         add(this.titleLabel);
+        this.titleLabel.setForeground(Color.WHITE);
 
         JPanel buttonPanel = new JPanel();
         int numButtons = state.getCourseList().size();
@@ -38,6 +38,7 @@ public class Page3_ClassSelector extends Page {
         int rows = (int) Math.ceil((double) numButtons / columns);
         buttonPanel.setLayout(new GridLayout(rows, columns, 10, 10));
         addButtons(state.getCourseList(), buttonPanel);
+        buttonPanel.setBackground(new Color(242, 169, 0));
 
         scrollPane = new JScrollPane(buttonPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -87,5 +88,10 @@ public class Page3_ClassSelector extends Page {
 
         state.setCourseList(courseNames);
         super.onPageShown();
+    }
+    //Color of the Background
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        setBackground(new Color(0, 45, 114));
     }
 }

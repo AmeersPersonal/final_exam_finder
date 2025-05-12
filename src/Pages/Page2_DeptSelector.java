@@ -1,7 +1,8 @@
 package Pages;
 // Page 2 class
 import Academics.Deparment;
-import java.awt.GridLayout;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -25,6 +26,7 @@ public class Page2_DeptSelector extends Page {
         // Add title label
         this.campusLabel = new JLabel("Campus Selected: " + state.getCampus().getName() + " , Please select your dept out of the list");
         add(this.campusLabel);
+        this.campusLabel.setForeground(Color.WHITE);
 
         JPanel buttonPanel = new JPanel();
         int numButtons = state.getDeptList().size();
@@ -32,6 +34,7 @@ public class Page2_DeptSelector extends Page {
         int rows = (int) Math.ceil((double) numButtons / columns);
         buttonPanel.setLayout(new GridLayout(rows, columns, 10, 10));
         addButtons(state.getDeptList(), buttonPanel);
+        buttonPanel.setBackground(new Color(242, 169, 0));
 
         scrollPane = new JScrollPane(buttonPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -54,5 +57,10 @@ public class Page2_DeptSelector extends Page {
     public void onPageShown() {
         state.setDeptList(Deparment.deparmentNames);
         super.onPageShown();
+    }
+    //Color of the Background
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        setBackground(new Color(0, 45, 114));
     }
 }
