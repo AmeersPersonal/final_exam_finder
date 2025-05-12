@@ -6,6 +6,12 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+/*
+Modifed by Max You and Jeffery
+CSCI 185 M03
+Final Exam Finder
+Date: 5/12/2025
+ */
 // Made by Max You
 // First take on creating the GUI Search Engine w/ JSwing, helped inspire the remaining GUI program
 public class AutoCompleteSearchFromCSV extends JFrame {
@@ -16,31 +22,25 @@ public class AutoCompleteSearchFromCSV extends JFrame {
     private static final int MAX_SUGGESTIONS = 10;  // limit to 10 options
 
     public AutoCompleteSearchFromCSV() {
-        // Load search options from CSV file
         searchOptions = loadSearchOptionsFromCSV("FinalExam.csv");
 
-        // Setup frame
         setTitle("Autocomplete Search Bar");
         setSize(400, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
 
-        // Create search bar
         searchBar = new JTextField();
         searchBar.setPreferredSize(new Dimension(300, 30));
         add(searchBar);
 
-        // Popup for suggestions
         suggestionsPopup = new JPopupMenu();
 
-        // Document listener for typing
         searchBar.getDocument().addDocumentListener(new DocumentListener() {
             public void insertUpdate(DocumentEvent e) { showSuggestions(); }
             public void removeUpdate(DocumentEvent e) { showSuggestions(); }
             public void changedUpdate(DocumentEvent e) { showSuggestions(); }
         });
 
-        // Key listener for arrow navigation & Enter key
         searchBar.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 if (suggestionsPopup.isVisible()) {
@@ -69,10 +69,8 @@ public class AutoCompleteSearchFromCSV extends JFrame {
             }
         });
 
-        // Hide popup when losing focus
         searchBar.addFocusListener(new FocusAdapter() {
             public void focusLost(FocusEvent e) {
-                // only hide if not clicking inside popup
                 SwingUtilities.invokeLater(() -> {
                     if (!suggestionsPopup.isAncestorOf(KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner())) {
                         suggestionsPopup.setVisible(false);

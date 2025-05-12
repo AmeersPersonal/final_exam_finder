@@ -1,3 +1,9 @@
+/*
+Modifed by Jeffrey Chu on 5/12/2025
+CSCI 185 M03
+Final Exam Finder
+ */
+
 package Pages;
 
 // Jeffrey: Campus enum (Basically a restricted list for strings. Prevents typos and errors)

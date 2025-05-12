@@ -8,6 +8,12 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+/*
+Modifed by Max You and Jeffrey Chu
+CSCI 185 M03
+Final Exam Finder
+Date: 5/12/2025
+ */
 // Made by Max You
 // CLI Search Engine (Used to help create the GUI Engine)
 public class CLIEngine {
