@@ -1,3 +1,4 @@
+import CLISearchEngine.CLIEngine;
 import FileIO.IO;
 import Pages.AppStateManager;
 import java.io.FileNotFoundException;
@@ -10,5 +11,8 @@ public class Main {
         AppStateManager GUIState = new AppStateManager();
 
         System.out.println("\n\n\n\n\n\n\n\n\n" + IO.readFile("src/FileIO/FinalExam.csv"));
-}
+
+        CLIEngine cliEngine = new CLIEngine();
+        cliEngine.runEngine();
+    }
 }

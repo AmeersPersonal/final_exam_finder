@@ -7,6 +7,7 @@ package Academics;
 
 import java.util.ArrayList;
 
+
 public abstract class Course {
     private final String location;
     private final String courseCode;
@@ -20,8 +21,6 @@ public abstract class Course {
         this.courseName = courseName;
         this.courseSection = courseSection;
         courses.add(this);
-
-
     }
 
 

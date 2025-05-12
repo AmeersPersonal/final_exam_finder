@@ -6,6 +6,8 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+// Made by Max You
+// First take on creating the GUI Search Engine w/ JSwing, helped inspire the remaining GUI program
 public class AutoCompleteSearchFromCSV extends JFrame {
     private JTextField searchBar;
     private JPopupMenu suggestionsPopup;
