@@ -6,13 +6,13 @@ public class LICourse extends Course{
     private final String courseCode;
     private final String courseName;
     public final String courseSection;
-    private String final_exam_date;
-    private String professorName;
-    private static ArrayList<LICourse> courses = new ArrayList<>();
-    private String timeStart;
-    private String timeEnd;
-    private String building;
-    private String room;
+    private final String final_exam_date;
+    private final String professorName;
+    private static final ArrayList<LICourse> courses = new ArrayList<>();
+    private final String timeStart;
+    private final String timeEnd;
+    private final String building;
+    private final String room;
 
 
     public LICourse(String courseCode, String courseName, String courseSection, String professorName, String final_exam_date, String timeStart, String timeEnd, String building, String room) {
@@ -71,8 +71,8 @@ public class LICourse extends Course{
         return room;
     }
     
-    public static ArrayList<LICourse> getCourses() {
-        return new ArrayList<LICourse>(courses);
+    public static ArrayList<Course> getCourses() {
+        return new ArrayList<Course>(courses);
     }
 
 
