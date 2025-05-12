@@ -6,6 +6,7 @@ Final Exam Finder
 package Academics;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deparment {
     private final String name;
@@ -70,6 +71,10 @@ public class Deparment {
             }
         }
         return false;
+    }
+
+    public static void sortDeparments() {
+        Collections.sort(deparmentNames);
     }
 
     public void appendCourses(ArrayList<Course> courses) {

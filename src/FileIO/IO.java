@@ -14,6 +14,7 @@ import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class IO {
 
@@ -101,7 +102,10 @@ public class IO {
                             }
                         }
                     }
-
+                    Deparment.sortDeparments();
+                    Deparment.deparments.forEach((Deparment d) -> {
+                        Collections.sort(d.courses);
+                    });
                 }
 
             }

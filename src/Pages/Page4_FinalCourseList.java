@@ -45,7 +45,6 @@ public class Page4_FinalCourseList extends Page {
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         addButtons(state.getFinalCourseList(), buttonPanel);
         buttonPanel.setBackground(new Color(242, 169, 0));
-
         scrollPane = new JScrollPane(buttonPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -66,6 +65,7 @@ public class Page4_FinalCourseList extends Page {
                 }
             });
             buttonPanel.add(button);
+            buttonPanel.add(Box.createRigidArea(new Dimension(15, 15)));
         }
 
     }

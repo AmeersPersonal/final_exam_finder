@@ -6,9 +6,10 @@ Final Exam Finder
 package Academics;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
-public abstract class Course {
+public abstract class Course implements Comparable<Course> {
     private final String location;
     private final String courseCode;
     private final String courseName;
@@ -22,6 +23,13 @@ public abstract class Course {
         this.courseSection = courseSection;
         courses.add(this);
     }
+
+    @Override
+    public int compareTo(Course other) {
+        return this.courseName.compareTo(other.courseName);
+    }
+
+
 
 
     public static ArrayList<Course> getCourses() {
