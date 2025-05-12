@@ -1,4 +1,9 @@
-package Academics;
+
+/*
+Modifed by Ameer Tayeh
+CSCI 185 M03
+Final Exam Finder
+ */package Academics;
 
 import java.util.ArrayList;
 

@@ -1,3 +1,10 @@
+/*
+Modifed by Ameer Tayeh
+CSCI 185 M03
+Final Exam Finder
+ */
+
+
 import Academics.Course;
 import Academics.Deparment;
 import Academics.LICourse;
@@ -11,7 +18,34 @@ import java.util.Arrays;
 public class IO {
 
 
+    public static String search(String fileName, String phrase) throws FileNotFoundException {
+        File file = new File(fileName);
+        ArrayList<String> res = new ArrayList<>();
 
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+
+
+            while((line =br.readLine()) !=null){
+                StringBuilder builder = new StringBuilder();
+                if (line.contains(phrase)){
+                    if(line.contains("Cycle D") || line.contains("Spring 2025")){
+                        String[] data = line.split(",");
+
+                        builder.append(data[1]+ data[2] + data[3] + data[5] +data[9] + data[10] +data[11]);
+                        res.add(builder.toString());
+
+
+                    }
+                }
+
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return " ";
+    }
     public static String readFile(String fileName) throws FileNotFoundException {
         File file = new File(fileName);
         try {
@@ -20,10 +54,6 @@ public class IO {
             String line;
             //checks if line exists and not end in file
             while ((line = br.readLine()) != null) {
-
-                if (line == null) {
-                    continue;
-                }
 
                 if (line.contains("Cycle D") || line.contains("Spring 2025")){
                     String[] data = line.split(",");
