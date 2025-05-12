@@ -26,11 +26,12 @@ public class Page4_FinalCourseList extends Page {
     public void addComponents() {
         addButton(this, "<- To Prev page", (ActionEvent e) -> {
             state.navigateTo(PageIdentifier.PAGE3);
+            state.setQuickSearch(false);
         });
         this.titleLabel = new JLabel(
                 "Course Selected: " + state.getCourse() + " , Look below to find the finals based on your section");
         add(this.titleLabel);
-        
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         addButtons(state.getFinalCourseList(), buttonPanel);

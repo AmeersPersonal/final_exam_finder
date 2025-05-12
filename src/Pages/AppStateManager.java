@@ -50,7 +50,7 @@ public class AppStateManager {
     }
 
     public String getCourse() {
-        return this.courseSelected;
+        return getQuickSearch() ? "N/A (Quick Search)" : this.courseSelected;
     }
 
     public ArrayList<String> getDeptList() {

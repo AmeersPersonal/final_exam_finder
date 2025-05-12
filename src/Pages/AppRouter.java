@@ -18,7 +18,7 @@ public class AppRouter {
         this.frame = new JFrame();
 
         // JFrame settings
-        this.frame.setTitle("Multi-Page App");
+        this.frame.setTitle("Final Exam Searcher");
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setSize(1920, 1280);
 
