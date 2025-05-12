@@ -1,6 +1,6 @@
 
 /*
-Modifed by Ameer Tayeh on 5/12/25
+Modifed by Ameer Tayeh and Max You on 5/12/25
 CSCI 185 M03
 Final Exam Finder
  */
