@@ -1,7 +1,9 @@
 package Pages;
 // Page 1 class
+import Academics.Course;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.*;
 
 // Jeffrey: First page, allows you to select a campus.
@@ -17,10 +19,24 @@ public class Page1_CampusSelector extends Page {
     public void addComponents() {
         JLabel quickSearchLabel = new JLabel("Use this to quick search:");
         JTextField quickSearchField = new JTextField("Insert search query here");
-        quickSearchField.setSize(100, 10);
+        quickSearchField.setPreferredSize(new java.awt.Dimension(150, 25));
+
+        ArrayList<String> courseString = new ArrayList<>();
+        Course.getCourses().forEach((Course course) -> {
+            courseString.add(course.toString());
+        });
+
+        String[] options = new String[courseString.size()];
+        for (int i = 0; i < courseString.size(); i++) {
+            options[i] = courseString.get(i);
+        }
+
+        JComboBox<String> searchDropdown = new JComboBox<>(options);
+        searchDropdown.setPreferredSize(new java.awt.Dimension(150, 25));
 
         add(quickSearchLabel);
         add(quickSearchField);
+        add(searchDropdown);
         addButton("Click to Quick Search", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
