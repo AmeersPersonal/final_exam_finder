@@ -18,7 +18,7 @@ import java.util.Arrays;
 public class IO {
 
 
-    public static String search(String fileName, String phrase) throws FileNotFoundException {
+    public static ArrayList<String> search(String fileName, String phrase) throws FileNotFoundException {
         File file = new File(fileName);
         ArrayList<String> res = new ArrayList<>();
 
@@ -37,14 +37,15 @@ public class IO {
                         res.add(builder.toString());
 
 
+
                     }
                 }
 
             }
+            return res;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return " ";
     }
     public static String readFile(String fileName) throws FileNotFoundException {
         File file = new File(fileName);
