@@ -14,9 +14,9 @@ public class AppStateManager {
     private Campus campus;
     private String deptSelected;
     private String courseSelected;
-    private ArrayList<String> deptList = new ArrayList<>();
-    private ArrayList<String> courseList = new ArrayList<>();
-    private ArrayList<String> finalCourseList = new ArrayList<>();
+    private ArrayList<String> deptList;
+    private ArrayList<String> courseList;
+    private ArrayList<String> finalCourseList;
 
     // State Manager for our app, an all-in-one place to retrieve and update state via the application.
     // Part of this was inspired by web development, specifically React and how they have different state varables.
@@ -26,6 +26,9 @@ public class AppStateManager {
         this.campus = Campus.NONE; // Default campus
         this.deptSelected = "";
         this.courseSelected = "";
+        this.deptList = new ArrayList<>();
+        this.courseList = new ArrayList<>();
+        this.finalCourseList = new ArrayList<>();
 
         // StateManager uses the main Page to tell the page where it needs to navigate to.
         

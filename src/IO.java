@@ -36,12 +36,22 @@ public class IO {
                     String courseName = data[2];
                     String professorName = data[3];
                     String day = data[4];
-                    String date = data[5];
-                    String timeStart = data[6];
-                    String timeEnd = data[7];
-                    String building = data[8];
-                    String room = data[9].split("Rm. ")[0];
-                    String campus =data[10];
+                    String date = data[5] + data[6];
+                    String timeStart = data[7];
+                    String timeEnd = data[8];
+                    String building;
+                    String room;
+                    String campus;
+                    if (data[9].equals("TBA") || data[9].equals("Zoom")) {
+                        building = data[9];
+                        room = "";
+                        campus =data[10];
+                    } else {
+
+                        building = data[9];
+                        room = data[10];
+                        campus =data[11];
+                    }
                     System.out.println(deparement);
 
                     Course c;

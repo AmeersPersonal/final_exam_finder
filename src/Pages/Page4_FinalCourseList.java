@@ -18,10 +18,12 @@ import java.util.stream.Collectors;
 public class Page4_FinalCourseList extends Page {
     // instance fields
     private JLabel titleLabel;
+    private List<String> finalCourseList;
 
     // Constructor
     public Page4_FinalCourseList(AppStateManager state) {
         super(state);
+        finalCourseList = new ArrayList<>();
     }
 
     // Add components to the page such as the title label.
@@ -30,15 +32,25 @@ public class Page4_FinalCourseList extends Page {
         this.titleLabel = new JLabel(
                 "Course Selected: " + state.getCourse() + " , Look below to find the finals based on your section");
         add(this.titleLabel);
-        addLabels(state.getFinalCourseList());
+        addButtons(state.getFinalCourseList());
+        state.getFinalCourseList().forEach((String s) -> {
+            System.out.println(s);
+        });
     }
 
     // Helper method to add buttons across a list of courses.
-    public void addLabels(ArrayList<String> FinalCoursesList) {
-        for (String name : FinalCoursesList) {
-            JLabel label = new JLabel(name);
-            label.setVisible(true);
-            add(label);
+    public void addButtons(ArrayList<String> listOfFinalCourseCodes) {
+        if (finalCourseList != null) {
+            for (String name : finalCourseList) {
+            JButton button = new JButton(name);
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                }
+            });
+
+            add(button);
+        }
         }
     }
 
@@ -51,11 +63,15 @@ public class Page4_FinalCourseList extends Page {
             if (c instanceof LICourse) {
                 LICourse LIC = (LICourse) c;
                 if (state.getCourse().equals(LIC.getCourseName()) && LIC.getLocation().equals(state.getCampus().getName())) {
+                    System.out.println(LIC.getLocation());
+                    System.out.println(state.getCampus().getName());
                     courseString.add(LIC.toString());
                 }
             } else if (c instanceof NYCCourse) {
                 NYCCourse NYCC = (NYCCourse) c;
                 if (state.getCourse().equals(NYCC.getCourseName()) && NYCC.getLocation().equals(state.getCampus().getName())) {
+                    System.out.println(NYCC.getLocation());
+                    System.out.println(state.getCampus().getName());
                     courseString.add(NYCC.toString());
                 }
             }
@@ -64,7 +80,9 @@ public class Page4_FinalCourseList extends Page {
         courseString.forEach((String s) -> {
             System.out.println(s);
         });
+
         state.setFinalCourseList(courseString);
+        this.finalCourseList = courseString;
         super.onPageShown();
     }
 }
