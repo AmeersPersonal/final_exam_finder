@@ -1,9 +1,10 @@
 
 /*
-Modifed by Ameer Tayeh
+Modifed by Ameer Tayeh on 5/12/25
 CSCI 185 M03
 Final Exam Finder
- */package Academics;
+ */
+package Academics;
 
 import java.util.ArrayList;
 
