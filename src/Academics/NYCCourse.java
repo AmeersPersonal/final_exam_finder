@@ -3,21 +3,28 @@ package Academics;
 import java.util.ArrayList;
 
 public class NYCCourse extends Course {
-    public final String courseCode;
-    public final String courseName;
+    private final String courseCode;
+    private final String courseName;
     public final String courseSection;
+    private String final_exam_date;
+    private String professorName;
+    private String timeStart;
+    private String timeEnd;
+    private String building;
+    private String room;
+    public static ArrayList<NYCCourse> courses = new ArrayList<NYCCourse>();
 
-    public String professorName;
-    public String final_exam_date;
-    public static  ArrayList<NYCCourse> courses = new ArrayList<NYCCourse>();
-
-    public NYCCourse(String courseCode, String courseName, String courseSection, String professorName, final String final_exam_date) {
+    public NYCCourse(String courseCode, String courseName, String courseSection, String professorName, String final_exam_date, String timeStart, String timeEnd, String building, String room) {
         super("NYC", courseCode, courseName, courseSection);
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.courseSection = courseSection;
         this.professorName = professorName;
         this.final_exam_date = final_exam_date;
+        this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
+        this.building = building;
+        this.room = room;
         courses.add(this);
 
     }
@@ -32,7 +39,7 @@ public class NYCCourse extends Course {
     }
 
     @Override
-    String getLocation() {
+    public String getLocation() {
         return "NYC";
     }
 
@@ -52,10 +59,24 @@ public class NYCCourse extends Course {
         return new ArrayList<NYCCourse>(courses);
    }
 
+    public String getTimeStart() {
+        return timeStart;
+    }
+
+    public String getTimeEnd() {
+        return timeEnd;
+    }
+
+    public String getBuilding() {
+        return building;
+    }
+    
+    public String getRoom() {
+        return room;
+    }
 
     @Override
     public String toString() {
-        return this.getCourseName() +" " + this.getCourseCode() +" " +this.getCourseSection() + " " + this.getProfessorName() + " " + this.getFinalExamDate();
-
+        return this.getCourseName() +" " + this.getCourseCode() +" " +this.getCourseSection() + " " + this.getProfessorName() + " " + this.getFinalExamDate() + " " + this.getTimeStart() + " " + this.getTimeEnd() + " " + this.getBuilding() + " " + this.getRoom();
     }
 }

@@ -31,11 +31,13 @@ public class AppRouter {
         Page1_CampusSelector page1 = new Page1_CampusSelector(state);
         Page2_DeptSelector page2 = new Page2_DeptSelector(state);
         Page3_ClassSelector page3 = new Page3_ClassSelector(state);
+        Page4_FinalCourseList page4 = new Page4_FinalCourseList(state);
 
         // Add pages to the card layout
         this.mainPanel.add(page1, PageIdentifier.PAGE1.getDisplayName());
         this.mainPanel.add(page2, PageIdentifier.PAGE2.getDisplayName());
         this.mainPanel.add(page3, PageIdentifier.PAGE3.getDisplayName());
+        this.mainPanel.add(page4, PageIdentifier.PAGE4.getDisplayName());
 
         this.frame.add(mainPanel);
         this.frame.setVisible(true);

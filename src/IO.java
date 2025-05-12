@@ -5,6 +5,7 @@ import Academics.NYCCourse;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class IO {
@@ -46,16 +47,18 @@ public class IO {
                     Course c;
                     if (campus.equals("New York City")){
 
-                        c = new NYCCourse(deparement + " " + code, courseName, code, professorName, date);
+                        c = new NYCCourse(deparement + " " + code, courseName, code, professorName, date, timeStart, timeEnd, building, room);
                     }
                     else{
 
-                         c = new LICourse(deparement + " " + code, courseName, code, professorName, date);
+                         c = new LICourse(deparement + " " + code, courseName, code, professorName, date, timeStart, timeEnd, building, room);
                     }
 
 
                     if (!Deparment.doesDeparmentExist(deparement)){
-                        Deparment deparmentVar = new Deparment(deparement, new Course[]{c});
+                        ArrayList<Course> courses = new ArrayList<>();
+                        courses.add(c);
+                        Deparment deparmentVar = new Deparment(deparement, new ArrayList<>(courses));
                     }
                     else{
                         for(Deparment d: Deparment.deparments){

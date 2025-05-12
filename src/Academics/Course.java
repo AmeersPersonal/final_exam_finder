@@ -7,9 +7,7 @@ public abstract class Course {
     private final String courseCode;
     private final String courseName;
     private final String courseSection;
-    private static  ArrayList<Course> courses = new ArrayList<>();
-
-
+    private static ArrayList<Course> courses = new ArrayList<>();
 
     public Course(String location, String courseCode, String courseName, String courseSection) {
         this.location = location;
@@ -22,9 +20,13 @@ public abstract class Course {
     }
 
 
-    private static ArrayList<Course> getCourses() {
+    public static ArrayList<Course> getCourses() {
         return new ArrayList<Course>(courses);
     }
+
+    // public String getCourseName() {
+    //     return this.courseName;
+    // }
 
     abstract String getLocation();
 

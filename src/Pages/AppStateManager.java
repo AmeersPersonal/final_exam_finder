@@ -16,11 +16,11 @@ public class AppStateManager {
     private String courseSelected;
     private ArrayList<String> deptList = new ArrayList<>();
     private ArrayList<String> courseList = new ArrayList<>();
+    private ArrayList<String> finalCourseList = new ArrayList<>();
 
     // State Manager for our app, an all-in-one place to retrieve and update state via the application.
     // Part of this was inspired by web development, specifically React and how they have different state varables.
     public AppStateManager() {
-        System.out.println("StateManager constructor called");
 
         // instantiate all instance fields
         this.campus = Campus.NONE; // Default campus
@@ -28,10 +28,6 @@ public class AppStateManager {
         this.courseSelected = "";
 
         // StateManager uses the main Page to tell the page where it needs to navigate to.
-
-        // dummy data
-        deptList.add("Hello World");
-        courseList.add("Hello World");
         
         this.mainPage = new AppRouter(this);
     }
@@ -46,12 +42,20 @@ public class AppStateManager {
         return this.deptSelected;
     }
 
+    public String getCourse() {
+        return this.courseSelected;
+    }
+
     public ArrayList<String> getDeptList() {
         return StringArrayListCopy(this.deptList);
     }
 
     public ArrayList<String> getCourseList() {
         return StringArrayListCopy(this.courseList);
+    }
+
+    public ArrayList<String> getFinalCourseList() {
+        return StringArrayListCopy(this.finalCourseList);
     }
 
     // setters
@@ -75,6 +79,10 @@ public class AppStateManager {
         this.courseList = courseList;
     }  
 
+    public void setFinalCourseList(ArrayList<String> courseList) {
+        this.courseList = courseList;
+    }  
+
     // navigate to a page. State Manager has it to tell the main page where to go. 
     public void navigateTo(PageIdentifier pageName) {
         this.mainPage.navigateToPage(pageName.getDisplayName());
@@ -84,6 +92,16 @@ public class AppStateManager {
         ArrayList<String> listCopy = new ArrayList<String>();
 
         list.forEach((String s) -> {
+            listCopy.add(s);
+        });
+
+        return listCopy;
+    }
+
+        private ArrayList<Course> CourseArrayListCopy(ArrayList<Course> list) {
+        ArrayList<Course> listCopy = new ArrayList<Course>();
+
+        list.forEach((Course s) -> {
             listCopy.add(s);
         });
 

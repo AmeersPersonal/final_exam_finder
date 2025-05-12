@@ -2,6 +2,7 @@ package Pages;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // Jeffrey: Abstract class for all pages in the application. This class provides a common structure and methods for all pages.

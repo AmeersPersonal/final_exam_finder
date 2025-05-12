@@ -2,6 +2,7 @@ package Pages;
 // Page 2 class
 import javax.swing.*;
 
+import Academics.Deparment;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -30,11 +31,16 @@ public class Page2_DeptSelector extends Page {
     // Helper method, takes an array of departments and creates a button for each dept.
     public void addButtons(ArrayList<String> listOfDepts) {
         for (String name : listOfDepts) {
-            System.out.println(name);
             addButton(name, (ActionEvent e) -> {
                 state.setDeptSelected(name);
                 state.navigateTo(PageIdentifier.PAGE3);
             });
         }
+    }
+
+    @Override
+    public void onPageShown() {
+        state.setDeptList(Deparment.deparmentNames);
+        super.onPageShown();
     }
 }
