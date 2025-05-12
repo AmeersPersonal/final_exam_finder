@@ -55,8 +55,8 @@ public class NYCCourse extends Course {
         return this.final_exam_date;
     }
 
-   public static ArrayList<NYCCourse> getCourses() {
-        return new ArrayList<NYCCourse>(courses);
+   public static ArrayList<Course> getCourses() {
+        return new ArrayList<Course>(courses);
    }
 
     public String getTimeStart() {

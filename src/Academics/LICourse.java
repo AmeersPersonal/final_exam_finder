@@ -71,8 +71,8 @@ public class LICourse extends Course{
         return room;
     }
     
-    public static ArrayList<LICourse> getCourses() {
-        return new ArrayList<LICourse>(courses);
+    public static ArrayList<Course> getCourses() {
+        return new ArrayList<Course>(courses);
     }
 
 

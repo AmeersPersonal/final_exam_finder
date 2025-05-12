@@ -27,6 +27,9 @@ public class Page4_FinalCourseList extends Page {
     // Add components to the page such as the title label.
     @Override
     public void addComponents() {
+        addButton("<- To Prev page", (ActionEvent e) -> {
+            state.navigateTo(PageIdentifier.PAGE3);
+        });
         this.titleLabel = new JLabel(
                 "Course Selected: " + state.getCourse() + " , Look below to find the finals based on your section");
         add(this.titleLabel);

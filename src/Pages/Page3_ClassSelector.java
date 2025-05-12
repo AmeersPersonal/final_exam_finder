@@ -26,6 +26,9 @@ public class Page3_ClassSelector extends Page {
     // Add components to the page such as the title label.
     @Override
     public void addComponents() {
+        addButton("<- To Prev page", (ActionEvent e) -> {
+            state.navigateTo(PageIdentifier.PAGE2);
+        });
         this.titleLabel = new JLabel("Dept Selected: " + state.getDept() + " , Please select your course of the list");
         add(this.titleLabel);
         addButtons(state.getCourseList());
