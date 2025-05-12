@@ -1,3 +1,10 @@
+/*
+Modifed by Cristopher Bustos and Jeffrey Chu on 5/12/2025
+CSCI 185 M03
+Final Exam Finder
+5/12/2025
+ */
+
 package Pages;
 
 // Page Identifier (Restricted list of page strings) to prevent typos and errors

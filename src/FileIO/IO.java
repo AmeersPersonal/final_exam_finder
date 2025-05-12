@@ -9,11 +9,8 @@ import Academics.Course;
 import Academics.Deparment;
 import Academics.LICourse;
 import Academics.NYCCourse;
-
-import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class IO {
