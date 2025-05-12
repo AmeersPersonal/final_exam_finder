@@ -47,12 +47,14 @@ public class Page4_FinalCourseList extends Page {
     public void addButtons(ArrayList<String> listOfFinalCourseCodes, JPanel buttonPanel) {
         for (String name : listOfFinalCourseCodes) {
             JButton button = new JButton(name);
+
+            button.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, 70)); // Fixed height of 50
+            button.setAlignmentX(CENTER_ALIGNMENT);
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                 }
             });
-
             buttonPanel.add(button);
         }
 
