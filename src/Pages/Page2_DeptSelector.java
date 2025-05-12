@@ -22,6 +22,9 @@ public class Page2_DeptSelector extends Page {
 
     @Override
     public void addComponents() {
+        addButton("<- To Prev page", (ActionEvent e) -> {
+            state.navigateTo(PageIdentifier.PAGE1);
+        });
         // Add title label
         this.campusLabel = new JLabel("Campus Selected: " + state.getCampus().getName() + " , Please select your dept out of the list");
         add(this.campusLabel);
