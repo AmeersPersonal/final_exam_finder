@@ -17,6 +17,8 @@ public class AppStateManager {
     private ArrayList<String> deptList;
     private ArrayList<String> courseList;
     private ArrayList<String> finalCourseList;
+    private boolean quickSearch;
+    private String quickSearchQuery;
 
     // State Manager for our app, an all-in-one place to retrieve and update state via the application.
     // Part of this was inspired by web development, specifically React and how they have different state varables.
@@ -29,6 +31,8 @@ public class AppStateManager {
         this.deptList = new ArrayList<>();
         this.courseList = new ArrayList<>();
         this.finalCourseList = new ArrayList<>();
+        this.quickSearch = false;
+        this.quickSearchQuery = "";
 
         // StateManager uses the main Page to tell the page where it needs to navigate to.
         
@@ -61,6 +65,14 @@ public class AppStateManager {
         return StringArrayListCopy(this.finalCourseList);
     }
 
+    public boolean getQuickSearch() {
+        return this.quickSearch;
+    }
+
+    public String getQuickSearchQuery() {
+        return this.quickSearchQuery;
+    }
+
     // setters
     public void setCampus(Campus campus) {
         this.campus = campus;
@@ -85,6 +97,14 @@ public class AppStateManager {
     public void setFinalCourseList(ArrayList<String> courseList) {
         this.finalCourseList = courseList;
     }  
+
+    public void setQuickSearch(boolean quickSearch) {
+        this.quickSearch = quickSearch;
+    }
+
+    public void setQuickSearchQuery(String query) {
+        this.quickSearchQuery = query;
+    }
 
     // navigate to a page. State Manager has it to tell the main page where to go. 
     public void navigateTo(PageIdentifier pageName) {

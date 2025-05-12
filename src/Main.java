@@ -1,15 +1,6 @@
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
-
-import Academics.Course;
-import Academics.Deparment;
-import Academics.LICourse;
-import Academics.NYCCourse;
+import FileIO.IO;
 import Pages.AppStateManager;
-import Pages.Campus;
+import java.io.FileNotFoundException;
 
 
 //Written by Max You (Merged to GUI)
@@ -18,6 +9,6 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         AppStateManager GUIState = new AppStateManager();
 
-        System.out.println("\n\n\n\n\n\n\n\n\n" + IO.readFile("src/FinalExam.csv"));
+        System.out.println("\n\n\n\n\n\n\n\n\n" + IO.readFile("src/FileIO/FinalExam.csv"));
 }
 }
