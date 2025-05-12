@@ -18,12 +18,10 @@ import java.util.stream.Collectors;
 public class Page4_FinalCourseList extends Page {
     // instance fields
     private JLabel titleLabel;
-    private List<String> finalCourseList;
 
     // Constructor
     public Page4_FinalCourseList(AppStateManager state) {
         super(state);
-        finalCourseList = new ArrayList<>();
     }
 
     // Add components to the page such as the title label.
@@ -40,8 +38,7 @@ public class Page4_FinalCourseList extends Page {
 
     // Helper method to add buttons across a list of courses.
     public void addButtons(ArrayList<String> listOfFinalCourseCodes) {
-        if (finalCourseList != null) {
-            for (String name : finalCourseList) {
+        for (String name : listOfFinalCourseCodes) {
             JButton button = new JButton(name);
             button.addActionListener(new ActionListener() {
                 @Override
@@ -51,7 +48,7 @@ public class Page4_FinalCourseList extends Page {
 
             add(button);
         }
-        }
+    
     }
 
     @Override
@@ -81,8 +78,7 @@ public class Page4_FinalCourseList extends Page {
             System.out.println(s);
         });
 
-        state.setFinalCourseList(courseString);
-        this.finalCourseList = courseString;
+        state.setFinalCourseList(courseString);;
         super.onPageShown();
     }
 }

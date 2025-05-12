@@ -83,7 +83,7 @@ public class AppStateManager {
     }  
 
     public void setFinalCourseList(ArrayList<String> courseList) {
-        this.courseList = courseList;
+        this.finalCourseList = courseList;
     }  
 
     // navigate to a page. State Manager has it to tell the main page where to go. 
