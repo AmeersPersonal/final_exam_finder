@@ -1,17 +1,17 @@
 package Pages;
 
 // Page 2 class
-import javax.swing.*;
-
 import Academics.Course;
 import Academics.Deparment;
 import Academics.LICourse;
 import Academics.NYCCourse;
 
-import java.awt.*;
+import java.awt.GridLayout;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.*;
 
 // Jeffrey: Third page that allows you to select a class based on department.
 public class Page3_ClassSelector extends Page {
@@ -26,16 +26,28 @@ public class Page3_ClassSelector extends Page {
     // Add components to the page such as the title label.
     @Override
     public void addComponents() {
-        addButton("<- To Prev page", (ActionEvent e) -> {
+        addButton(this, "<- To Prev page", (ActionEvent e) -> {
             state.navigateTo(PageIdentifier.PAGE2);
         });
         this.titleLabel = new JLabel("Dept Selected: " + state.getDept() + " , Please select your course of the list");
         add(this.titleLabel);
-        addButtons(state.getCourseList());
+
+        JPanel buttonPanel = new JPanel();
+        int numButtons = state.getCourseList().size();
+        int columns = 2;
+        int rows = (int) Math.ceil((double) numButtons / columns);
+        buttonPanel.setLayout(new GridLayout(rows, columns, 10, 10));
+        addButtons(state.getCourseList(), buttonPanel);
+
+        scrollPane = new JScrollPane(buttonPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setPreferredSize(new java.awt.Dimension(1600, 900));
+        add(scrollPane);
     }
 
     // Helper method to add buttons across a list of courses.
-    public void addButtons(ArrayList<String> listOfCourseCodes) {
+    public void addButtons(ArrayList<String> listOfCourseCodes, JPanel panel) {
 
         for (String name : listOfCourseCodes) {
             JButton button = new JButton(name);
@@ -43,11 +55,12 @@ public class Page3_ClassSelector extends Page {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     state.setCourseSelected(name);
+                    state.setQuickSearch(false);
                     state.navigateTo(PageIdentifier.PAGE4);
                 }
             });
 
-            add(button);
+            panel.add(button);
         }
     }
 

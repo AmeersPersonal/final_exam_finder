@@ -1,13 +1,10 @@
 package Pages;
 // Page 2 class
-import javax.swing.*;
-
 import Academics.Deparment;
-
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.*;
 
 // Second page, used to select a department based on the campuus selected
 public class Page2_DeptSelector extends Page {
@@ -22,19 +19,31 @@ public class Page2_DeptSelector extends Page {
 
     @Override
     public void addComponents() {
-        addButton("<- To Prev page", (ActionEvent e) -> {
+        addButton(this, "<- To Prev page", (ActionEvent e) -> {
             state.navigateTo(PageIdentifier.PAGE1);
         });
         // Add title label
         this.campusLabel = new JLabel("Campus Selected: " + state.getCampus().getName() + " , Please select your dept out of the list");
         add(this.campusLabel);
-        addButtons(state.getDeptList());
+
+        JPanel buttonPanel = new JPanel();
+        int numButtons = state.getDeptList().size();
+        int columns = 4;
+        int rows = (int) Math.ceil((double) numButtons / columns);
+        buttonPanel.setLayout(new GridLayout(rows, columns, 10, 10));
+        addButtons(state.getDeptList(), buttonPanel);
+
+        scrollPane = new JScrollPane(buttonPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setPreferredSize(new java.awt.Dimension(1600, 900));
+        add(scrollPane);
     }
 
     // Helper method, takes an array of departments and creates a button for each dept.
-    public void addButtons(ArrayList<String> listOfDepts) {
+    public void addButtons(ArrayList<String> listOfDepts, JPanel buttonPanel) {
         for (String name : listOfDepts) {
-            addButton(name, (ActionEvent e) -> {
+            addButton(buttonPanel, name, (ActionEvent e) -> {
                 state.setDeptSelected(name);
                 state.navigateTo(PageIdentifier.PAGE3);
             });

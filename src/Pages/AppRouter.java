@@ -2,10 +2,8 @@ package Pages;
 
 
 // Main application class
-import javax.swing.*;
-
 import java.awt.*;
-import java.util.ArrayList;
+import javax.swing.*;
 
 // Jeffrey: Page Navigator, handles the main application and navigation between pages.
 public class AppRouter {
@@ -22,7 +20,7 @@ public class AppRouter {
         // JFrame settings
         this.frame.setTitle("Multi-Page App");
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame.setSize(400, 300);
+        this.frame.setSize(1920, 1280);
 
         this.cardLayout = new CardLayout();
         this.mainPanel = new JPanel(this.cardLayout);
