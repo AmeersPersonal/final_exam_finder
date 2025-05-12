@@ -28,7 +28,7 @@ public class IO {
 
             while ((line = br.readLine()) != null) {
                 StringBuilder builder = new StringBuilder();
-                if (line.contains(phrase)) {
+                if (line.toLowerCase().contains(phrase.toLowerCase())) {
                     if (line.contains("Cycle D") || line.contains("Spring 2025")) {
                         String[] data = line.split(",");
                         res.add(line);
